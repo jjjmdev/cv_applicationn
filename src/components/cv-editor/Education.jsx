@@ -22,7 +22,7 @@ export default function Education({ data, setData }) {
     })
   }
 
-  const handleEducationChange = (id, e) => {
+  const handleEntryChange = (id, e) => {
     const { name, value } = e.target
     const newData = data
     const selectedEntry = newData.education.find((entry) => entry.id === id)
@@ -30,6 +30,12 @@ export default function Education({ data, setData }) {
     selectedEntry[kebabToCamel(name)] = value
 
     setData({ ...newData })
+  }
+
+  const deleteEducationEntry = (id) => {
+    const newEducation = data.education.filter((entry) => entry.id !== id)
+
+    setData({ ...data, education: newEducation })
   }
 
   return (
@@ -41,7 +47,8 @@ export default function Education({ data, setData }) {
             <EducationForm
               key={id}
               formData={formData}
-              handleChange={handleEducationChange}
+              handleChange={handleEntryChange}
+              handleDelete={deleteEducationEntry}
             />
           )
         })}
@@ -53,8 +60,7 @@ export default function Education({ data, setData }) {
   )
 }
 
-function EducationForm({ formData, handleChange }) {
-  console.log(formData)
+function EducationForm({ formData, handleChange, handleDelete }) {
   return (
     <>
       <div className='education-form'>
@@ -110,6 +116,8 @@ function EducationForm({ formData, handleChange }) {
             onChange={(e) => handleChange(formData.id, e)}
           />
         </div>
+
+        <button onClick={() => handleDelete(formData.id)}>Delete</button>
       </div>
     </>
   )
