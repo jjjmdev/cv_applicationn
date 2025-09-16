@@ -1,13 +1,17 @@
+import { useState } from 'react'
+
 import './App.css'
 import Editor from './components/cv-editor/Editor'
 import Preview from './components/preview/Preview'
-import { data } from './data'
+import { data as initData } from './data'
 
 function App() {
+  const [data, setData] = useState(initData)
+
   return (
     <>
-      <Editor data={data} />
-      <Preview />
+      <Editor data={data} setData={setData} />
+      <Preview data={data} />
     </>
   )
 }
