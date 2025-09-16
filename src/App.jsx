@@ -1,11 +1,12 @@
 import './App.css'
 import Editor from './components/cv-editor/Editor'
 import Preview from './components/preview/Preview'
+import { data } from './data'
 
 function App() {
   return (
     <>
-      <Editor />
+      <Editor data={data} />
       <Preview />
     </>
   )
