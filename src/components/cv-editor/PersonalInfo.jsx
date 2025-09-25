@@ -2,6 +2,8 @@ import Section from './Section'
 import { kebabToCamel } from '../utils'
 
 export default function PersonalInfoForm({ data, setData }) {
+  const { personalInfo } = data
+
   const handleChange = (e) => {
     setData({
       ...data,
@@ -22,6 +24,7 @@ export default function PersonalInfoForm({ data, setData }) {
             name='first-name'
             id='first-name'
             onChange={handleChange}
+            value={personalInfo.firstName}
           />
         </div>
         <div>
@@ -31,11 +34,18 @@ export default function PersonalInfoForm({ data, setData }) {
             name='last-name'
             id='last-name'
             onChange={handleChange}
+            value={personalInfo.lastName}
           />
         </div>
         <div>
           <label htmlFor='email'>Email</label>
-          <input type='email' name='email' id='email' onChange={handleChange} />
+          <input
+            type='email'
+            name='email'
+            id='email'
+            onChange={handleChange}
+            value={personalInfo.email}
+          />
         </div>
         <div>
           <label htmlFor='phone-number'>Phone Number</label>
@@ -44,6 +54,7 @@ export default function PersonalInfoForm({ data, setData }) {
             name='phone-number'
             id='phone-number'
             onChange={handleChange}
+            value={personalInfo.phoneNumber}
           />
         </div>
         <div>
@@ -53,6 +64,7 @@ export default function PersonalInfoForm({ data, setData }) {
             name='location'
             id='location'
             onChange={handleChange}
+            value={personalInfo.location}
           />
         </div>
       </div>
