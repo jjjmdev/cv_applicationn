@@ -1,4 +1,4 @@
-export const data = {
+export const emptyData = {
   personalInfo: {
     firstName: '',
     lastName: '',
@@ -6,8 +6,31 @@ export const data = {
     phoneNumber: '',
     location: '',
   },
-  skills: [],
-  projects: [],
-  education: [],
-  experience: [],
+  education: {
+    schoolName: '',
+    degree: '',
+    startDate: '',
+    endDate: '',
+    location: '',
+  },
+  experience: {
+    companyName: '',
+    jobTitle: '',
+    startDate: '',
+    endDate: '',
+    location: '',
+    description: '',
+  },
+  projects: {
+    projectName: '',
+    description: '',
+  },
+}
+
+export const data = {
+  personalInfo: emptyData.personalInfo,
+  skills: '',
+  projects: {},
+  education: {},
+  experience: {},
 }

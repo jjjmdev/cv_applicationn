@@ -15,9 +15,9 @@ export default function Preview({ data }) {
       </section>
       <section className='preview-education'>
         <h2>Education</h2>
-        {education.map(
-          ({ schoolName, startDate, endDate, degree, location, id }) => (
-            <div className='preview-school' key={id}>
+        {Object.entries(education).map(
+          ([key, { schoolName, startDate, endDate, degree, location }]) => (
+            <div className='preview-school' key={key}>
               <div>
                 <h3>{schoolName}</h3>
                 <p>

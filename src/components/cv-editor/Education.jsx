@@ -1,51 +1,51 @@
 import { v4 as uuidv4 } from 'uuid'
 import Section from './Section'
 import { kebabToCamel } from '../utils'
+import { emptyData } from '../../data'
 
 export default function Education({ data, setData }) {
-  const { education } = data
-
   const createEducationEntry = () => {
     setData({
       ...data,
-      education: [
+      education: {
         ...data.education,
-        {
-          id: uuidv4(),
-          schoolName: '',
-          degree: '',
-          startDate: '',
-          endDate: '',
-          location: '',
-        },
-      ],
+        [uuidv4()]: emptyData.education,
+      },
     })
   }
 
   const handleEntryChange = (id, e) => {
     const { name, value } = e.target
-    const newData = data
-    const selectedEntry = newData.education.find((entry) => entry.id === id)
 
-    selectedEntry[kebabToCamel(name)] = value
-
-    setData({ ...newData })
+    setData({
+      ...data,
+      education: {
+        ...data.education,
+        [id]: {
+          ...data.education[id],
+          [kebabToCamel(name)]: value,
+        },
+      },
+    })
   }
 
   const deleteEducationEntry = (id) => {
-    const newEducation = data.education.filter((entry) => entry.id !== id)
+    const dataCopy = data
 
-    setData({ ...data, education: newEducation })
+    delete dataCopy.education[id]
+
+    setData({ ...dataCopy })
   }
 
   return (
     <>
       <Section title='Education'>
-        {education.map(({ id }) => {
-          const formData = education.find((form) => form.id === id)
+        {Object.keys(data.education).map((id) => {
+          const formData = data.education[id]
           return (
             <EducationForm
               key={id}
+              formId={id}
               formData={formData}
               handleChange={handleEntryChange}
               handleDelete={deleteEducationEntry}
@@ -60,7 +60,7 @@ export default function Education({ data, setData }) {
   )
 }
 
-function EducationForm({ formData, handleChange, handleDelete }) {
+function EducationForm({ formId, formData, handleChange, handleDelete }) {
   return (
     <>
       <div className='education-form'>
@@ -71,7 +71,7 @@ function EducationForm({ formData, handleChange, handleDelete }) {
             name='school-name'
             id='school-name'
             value={formData.schoolName}
-            onChange={(e) => handleChange(formData.id, e)}
+            onChange={(e) => handleChange(formId, e)}
           />
         </div>
         <div>
@@ -81,7 +81,7 @@ function EducationForm({ formData, handleChange, handleDelete }) {
             name='degree'
             id='degree'
             value={formData.degree}
-            onChange={(e) => handleChange(formData.id, e)}
+            onChange={(e) => handleChange(formId, e)}
           />
         </div>
         <div className='school-dates'>
@@ -92,7 +92,7 @@ function EducationForm({ formData, handleChange, handleDelete }) {
               name='start-date'
               id='start-date'
               value={formData.startDate}
-              onChange={(e) => handleChange(formData.id, e)}
+              onChange={(e) => handleChange(formId, e)}
             />
           </div>
           <div>
@@ -102,7 +102,7 @@ function EducationForm({ formData, handleChange, handleDelete }) {
               name='end-date'
               id='end-date'
               value={formData.endDate}
-              onChange={(e) => handleChange(formData.id, e)}
+              onChange={(e) => handleChange(formId, e)}
             />
           </div>
         </div>
@@ -113,11 +113,11 @@ function EducationForm({ formData, handleChange, handleDelete }) {
             name='location'
             id='location'
             value={formData.location}
-            onChange={(e) => handleChange(formData.id, e)}
+            onChange={(e) => handleChange(formId, e)}
           />
         </div>
 
-        <button onClick={() => handleDelete(formData.id)}>Delete</button>
+        <button onClick={() => handleDelete(formId)}>Delete</button>
       </div>
     </>
   )
