@@ -1,66 +1,10 @@
-import { v4 as uuidv4 } from 'uuid'
-import Section from './Section'
-import { kebabToCamel } from '../utils'
-import { emptyData } from '../../data'
-
-export default function Education({ data, setData }) {
-  const createEducationEntry = () => {
-    setData({
-      ...data,
-      education: {
-        ...data.education,
-        [uuidv4()]: emptyData.education,
-      },
-    })
-  }
-
-  const handleEntryChange = (id, e) => {
-    const { name, value } = e.target
-
-    setData({
-      ...data,
-      education: {
-        ...data.education,
-        [id]: {
-          ...data.education[id],
-          [kebabToCamel(name)]: value,
-        },
-      },
-    })
-  }
-
-  const deleteEducationEntry = (id) => {
-    const dataCopy = data
-
-    delete dataCopy.education[id]
-
-    setData({ ...dataCopy })
-  }
-
-  return (
-    <>
-      <Section title='Education'>
-        {Object.keys(data.education).map((id) => {
-          const formData = data.education[id]
-          return (
-            <EducationForm
-              key={id}
-              formId={id}
-              formData={formData}
-              handleChange={handleEntryChange}
-              handleDelete={deleteEducationEntry}
-            />
-          )
-        })}
-        <button className='education-add-button' onClick={createEducationEntry}>
-          Add Education
-        </button>
-      </Section>
-    </>
-  )
-}
-
-function EducationForm({ formId, formData, handleChange, handleDelete }) {
+export default function EducationForm({
+  formId,
+  formData,
+  handleChange,
+  handleDelete,
+  saveForm,
+}) {
   return (
     <>
       <div className='education-form'>
@@ -118,6 +62,7 @@ function EducationForm({ formId, formData, handleChange, handleDelete }) {
         </div>
 
         <button onClick={() => handleDelete(formId)}>Delete</button>
+        <button onClick={() => saveForm(formId)}>Save</button>
       </div>
     </>
   )
