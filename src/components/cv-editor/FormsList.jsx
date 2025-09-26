@@ -4,6 +4,7 @@ import { emptyData } from '../../data'
 import { kebabToCamel } from '../utils'
 
 import EducationForm from './forms/EducationForm'
+import ExperienceForm from './forms/ExperienceForm'
 
 export default function FormsList({ section, data, setData }) {
   const [selectedFormId, setSelectedFormId] = useState(null)
@@ -59,6 +60,15 @@ export default function FormsList({ section, data, setData }) {
         {section === 'education' && (
           <EducationForm
             formId={selectedFormId}
+            formData={data[section][selectedFormId] || null}
+            handleChange={handleEntryChange}
+            handleDelete={deleteFormEntry}
+            saveForm={saveFormEntry}
+          />
+        )}
+        {section === 'experience' && (
+          <ExperienceForm
+            formId={selectedFormId}
             formData={data[section][selectedFormId]}
             handleChange={handleEntryChange}
             handleDelete={deleteFormEntry}
@@ -73,6 +83,7 @@ export default function FormsList({ section, data, setData }) {
     <>
       {Object.entries(data[section]).map(([formId, formData]) => (
         <Form
+          key={formId}
           formId={formId}
           formData={formData}
           section={section}
@@ -86,10 +97,15 @@ export default function FormsList({ section, data, setData }) {
 }
 
 const Form = ({ formId, formData, section, startEditForm }) => {
-  if (section === 'education') {
+  const titles = {
+    education: 'schoolName',
+    experience: 'companyName',
+  }
+
+  if (titles[section]) {
     return (
       <button onClick={() => startEditForm(formId)}>
-        {formData.schoolName}
+        {formData[titles[section]] || ''}
       </button>
     )
   }

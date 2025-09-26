@@ -1,32 +1,35 @@
-export default function EducationForm({
+import Section from '../Section'
+
+export default function ExperienceForm({
   formId,
   formData,
   handleChange,
   handleDelete,
   saveForm,
 }) {
-  const { schoolName, degree, startDate, endDate, location } = formData
+  const { companyName, jobTitle, startDate, endDate, location, description } =
+    formData
 
   return (
     <>
-      <div className='education-form'>
+      <div className='experience-form'>
         <div>
-          <label htmlFor='school-name'>School</label>
+          <label htmlFor='company-name'>Company</label>
           <input
             type='text'
-            name='school-name'
-            id='school-name'
-            value={schoolName}
+            name='company-name'
+            id='company-name'
+            value={companyName}
             onChange={(e) => handleChange(formId, e)}
           />
         </div>
         <div>
-          <label htmlFor='degree'>Degree</label>
+          <label htmlFor='degree'>Job Title</label>
           <input
             type='text'
-            name='degree'
-            id='degree'
-            value={degree}
+            name='job-title'
+            id='job-title'
+            value={jobTitle}
             onChange={(e) => handleChange(formId, e)}
           />
         </div>
@@ -59,6 +62,16 @@ export default function EducationForm({
             name='location'
             id='location'
             value={location}
+            onChange={(e) => handleChange(formId, e)}
+          />
+        </div>
+        <div>
+          <label htmlFor='description'>Description</label>
+          <input
+            type='text'
+            name='description'
+            id='description'
+            value={description}
             onChange={(e) => handleChange(formId, e)}
           />
         </div>

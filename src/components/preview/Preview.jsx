@@ -1,5 +1,5 @@
 export default function Preview({ data }) {
-  const { personalInfo, education } = data
+  const { personalInfo, education, experience } = data
 
   return (
     <div className='preview'>
@@ -26,6 +26,34 @@ export default function Preview({ data }) {
               </div>
               <p>{degree}</p>
               <p>{location}</p>
+            </div>
+          )
+        )}
+      </section>
+      <section className='preview-experience'>
+        <h2>Experience</h2>
+        {Object.entries(experience).map(
+          ([
+            key,
+            {
+              companyName,
+              jobTitle,
+              startDate,
+              endDate,
+              location,
+              description,
+            },
+          ]) => (
+            <div className='preview-experience' key={key}>
+              <div>
+                <h3>{companyName}</h3>
+                <p>
+                  {startDate} – {endDate}
+                </p>
+              </div>
+              <p>{jobTitle}</p>
+              <p>{location}</p>
+              <p>{description}</p>
             </div>
           )
         )}
