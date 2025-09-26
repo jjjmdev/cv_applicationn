@@ -1,9 +1,5 @@
 import { useState } from 'react'
 import Navbar from './Navbar'
-import PersonalInfo from './PersonalInfo'
-import Experience from './Experience'
-import Projects from './Projects'
-import Skills from './Skills'
 
 import FormsList from './FormsList'
 
@@ -16,7 +12,12 @@ export default function Editor({ data, setData }) {
     <div className='cv-editor'>
       CV Editor
       <Navbar data={data} setActiveSection={setActiveSection} />
-      <FormsList section={activeSection} data={data} setData={setData} />
+      <FormsList
+        section={activeSection}
+        key={activeSection}
+        data={data}
+        setData={setData}
+      />
     </div>
   )
 }
