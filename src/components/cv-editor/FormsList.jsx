@@ -54,46 +54,48 @@ export default function FormsList({ section, data, setData }) {
     setSelectedFormId(id)
   }
 
-  if (selectedFormId !== null) {
+  // If no item is selected
+  if (selectedFormId === null) {
     return (
       <>
-        {section === 'education' && (
-          <EducationForm
-            formId={selectedFormId}
-            formData={data[section][selectedFormId] || null}
-            handleChange={handleEntryChange}
-            handleDelete={deleteFormEntry}
-            saveForm={saveFormEntry}
+        {Object.entries(data[section]).map(([formId, formData]) => (
+          <Form
+            key={formId}
+            formId={formId}
+            formData={formData}
+            section={section}
+            startEditForm={startEditFormEntry}
           />
-        )}
-        {section === 'experience' && (
-          <ExperienceForm
-            formId={selectedFormId}
-            formData={data[section][selectedFormId]}
-            handleChange={handleEntryChange}
-            handleDelete={deleteFormEntry}
-            saveForm={saveFormEntry}
-          />
-        )}
+        ))}
+
+        <button onClick={createFormEntry}>Add</button>
       </>
     )
   }
 
-  return (
-    <>
-      {Object.entries(data[section]).map(([formId, formData]) => (
-        <Form
-          key={formId}
-          formId={formId}
-          formData={formData}
-          section={section}
-          startEditForm={startEditFormEntry}
+  // For when there is item selected
+  switch (section) {
+    case 'education':
+      return (
+        <EducationForm
+          formId={selectedFormId}
+          formData={data[section][selectedFormId] || null}
+          handleChange={handleEntryChange}
+          handleDelete={deleteFormEntry}
+          saveForm={saveFormEntry}
         />
-      ))}
-
-      <button onClick={createFormEntry}>Add</button>
-    </>
-  )
+      )
+    case 'experience':
+      return (
+        <ExperienceForm
+          formId={selectedFormId}
+          formData={data[section][selectedFormId]}
+          handleChange={handleEntryChange}
+          handleDelete={deleteFormEntry}
+          saveForm={saveFormEntry}
+        />
+      )
+  }
 }
 
 const Form = ({ formId, formData, section, startEditForm }) => {
