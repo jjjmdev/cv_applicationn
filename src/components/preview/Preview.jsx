@@ -79,6 +79,11 @@ export default function Preview({ data }) {
             )
           )}
         </section>
+
+        <section className='preview-skills'>
+          <h2>Technical Skills</h2>
+          <p>{data.skills}</p>
+        </section>
       </div>
     </div>
   )
