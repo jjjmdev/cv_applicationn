@@ -5,6 +5,7 @@ import { kebabToCamel } from '../utils'
 
 import EducationForm from './forms/EducationForm'
 import ExperienceForm from './forms/ExperienceForm'
+import ProjectsForm from './forms/ProjectsForm'
 
 export default function FormsList({ section, data, setData }) {
   const [selectedFormId, setSelectedFormId] = useState(null)
@@ -95,6 +96,16 @@ export default function FormsList({ section, data, setData }) {
           saveForm={saveFormEntry}
         />
       )
+    case 'projects':
+      return (
+        <ProjectsForm
+          formId={selectedFormId}
+          formData={data[section][selectedFormId]}
+          handleChange={handleEntryChange}
+          handleDelete={deleteFormEntry}
+          saveForm={saveFormEntry}
+        />
+      )
   }
 }
 
@@ -102,6 +113,7 @@ const Form = ({ formId, formData, section, startEditForm }) => {
   const titles = {
     education: 'schoolName',
     experience: 'companyName',
+    projects: 'projectName',
   }
 
   if (titles[section]) {

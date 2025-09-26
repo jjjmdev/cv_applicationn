@@ -66,6 +66,19 @@ export default function Preview({ data }) {
             )
           )}
         </section>
+        <section className='preview-projects'>
+          <h2>Projects</h2>
+          <hr />
+
+          {Object.entries(data.projects).map(
+            ([key, { projectName, description }]) => (
+              <div key={key}>
+                <h3>{projectName}</h3>
+                <p>{description}</p>
+              </div>
+            )
+          )}
+        </section>
       </div>
     </div>
   )
