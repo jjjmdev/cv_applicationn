@@ -1,3 +1,5 @@
+import Section from '../Section'
+
 export default function EducationForm({
   formId,
   formData,
@@ -8,7 +10,7 @@ export default function EducationForm({
   const { schoolName, degree, startDate, endDate, location } = formData
 
   return (
-    <>
+    <Section title='Education'>
       <div className='education-form'>
         <div>
           <label htmlFor='school-name'>School</label>
@@ -63,9 +65,18 @@ export default function EducationForm({
           />
         </div>
 
-        <button onClick={() => handleDelete(formId)}>Delete</button>
-        <button onClick={() => saveForm(formId)}>Save</button>
+        <div className='buttons-container'>
+          <button
+            className='delete-button'
+            onClick={() => handleDelete(formId)}
+          >
+            Delete
+          </button>
+          <button className='save-button' onClick={() => saveForm(formId)}>
+            Save
+          </button>
+        </div>
       </div>
-    </>
+    </Section>
   )
 }

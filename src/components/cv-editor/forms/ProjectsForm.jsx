@@ -1,3 +1,5 @@
+import Section from '../Section'
+
 export default function ProjectsForm({
   formId,
   formData,
@@ -7,7 +9,7 @@ export default function ProjectsForm({
 }) {
   const { projectName, description } = formData
   return (
-    <>
+    <Section title='Projects'>
       <div className='projects-form'>
         <div>
           <label htmlFor='project-name'>
@@ -33,9 +35,18 @@ export default function ProjectsForm({
           />
         </div>
 
-        <button onClick={() => handleDelete(formId)}>Delete</button>
-        <button onClick={() => saveForm(formId)}>Save</button>
+        <div className='buttons-container'>
+          <button
+            className='delete-button'
+            onClick={() => handleDelete(formId)}
+          >
+            Delete
+          </button>
+          <button className='save-button' onClick={() => saveForm(formId)}>
+            Save
+          </button>
+        </div>
       </div>
-    </>
+    </Section>
   )
 }

@@ -1,0 +1,119 @@
+input,
+textarea {
+  border: none;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea {
+  height: 4rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.cv-editor {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  background-color: var(--editor-bg-color);
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+
+  nav,
+  section {
+    padding: 1.5rem 0;
+  }
+
+  section {
+    width: 100%;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+}
+
+.edit-form {
+  margin-bottom: 1rem;
+  width: 100%;
+
+  label {
+    display: block;
+    color: var(--secondary-color);
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    font-weight: 300;
+
+    span {
+      color: var(--warning-color);
+    }
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .save-button,
+  .delete-button {
+    width: 6rem;
+    padding: 4px 0;
+    font-weight: 500;
+    color: #ddd7d7;
+    border: solid 1px var(--secondary-color);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  .delete-button {
+    background-color: transparent;
+    color: var(--secondary-color);
+
+    &:hover {
+      color: var(--editor-bg-color);
+      background-color: var(--secondary-color);
+    }
+  }
+
+  .save-button {
+    color: var(--editor-bg-color);
+    background-color: var(--secondary-color);
+
+    &:hover {
+      color: var(--secondary-color);
+      background-color: transparent;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .edit-form {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cv-editor {
+    margin-bottom: 0;
+  }
+
+  textarea {
+    min-height: 15rem;
+  }
+
+  .edit-form {
+    width: 100%;
+  }
+}

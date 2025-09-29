@@ -1,0 +1,49 @@
+.form-buttons-container {
+  display: flex;
+}
+
+.form-open-button {
+  width: 100%;
+  text-align: start;
+  font-size: 0.9rem;
+  padding: 0.7rem;
+  margin-right: 0.5rem;
+
+  color: var(--secondary-color);
+  background-color: var(--input-bg-color);
+  border: solid 2px var(--nav-bg-color);
+
+  transition: opacity 0.2s ease-in;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.form-delete-button {
+  background: transparent;
+  color: var(--warning-color);
+  transition: opacity 0.2s ease-in;
+
+  svg {
+    height: 1.3rem;
+    width: auto;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.add-button {
+  padding: 0.5rem 0;
+  background-color: transparent;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in;
+
+  &:hover {
+    opacity: 1;
+  }
+}

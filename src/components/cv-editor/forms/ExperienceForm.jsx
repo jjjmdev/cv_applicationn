@@ -11,7 +11,7 @@ export default function ExperienceForm({
     formData
 
   return (
-    <>
+    <Section title='Experience'>
       <div className='experience-form'>
         <div>
           <label htmlFor='company-name'>Company</label>
@@ -76,9 +76,18 @@ export default function ExperienceForm({
           />
         </div>
 
-        <button onClick={() => handleDelete(formId)}>Delete</button>
-        <button onClick={() => saveForm(formId)}>Save</button>
+        <div className='buttons-container'>
+          <button
+            className='delete-button'
+            onClick={() => handleDelete(formId)}
+          >
+            Delete
+          </button>
+          <button className='save-button' onClick={() => saveForm(formId)}>
+            Save
+          </button>
+        </div>
       </div>
-    </>
+    </Section>
   )
 }

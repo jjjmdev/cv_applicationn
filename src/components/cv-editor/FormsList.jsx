@@ -1,8 +1,12 @@
+import './formsList.css'
+
 import { v4 as uuidv4 } from 'uuid'
 import { useState } from 'react'
+import { Trash2 } from 'lucide-react'
 import { emptyData } from '../../data'
-import { kebabToCamel } from '../utils'
+import { kebabToCamel, capitalizeFirstLetter } from '../utils'
 
+import Section from './Section'
 import EducationForm from './forms/EducationForm'
 import ExperienceForm from './forms/ExperienceForm'
 import ProjectsForm from './forms/ProjectsForm'
@@ -58,7 +62,7 @@ export default function FormsList({ section, data, setData }) {
   // If no item is selected
   if (selectedFormId === null) {
     return (
-      <>
+      <Section title={capitalizeFirstLetter(section)}>
         {Object.entries(data[section]).map(([formId, formData]) => (
           <Form
             key={formId}
@@ -66,11 +70,14 @@ export default function FormsList({ section, data, setData }) {
             formData={formData}
             section={section}
             startEditForm={startEditFormEntry}
+            onDeleteClick={deleteFormEntry}
           />
         ))}
 
-        <button onClick={createFormEntry}>Add</button>
-      </>
+        <button className='add-button' onClick={createFormEntry}>
+          Add {capitalizeFirstLetter(section)}
+        </button>
+      </Section>
     )
   }
 
@@ -109,7 +116,7 @@ export default function FormsList({ section, data, setData }) {
   }
 }
 
-const Form = ({ formId, formData, section, startEditForm }) => {
+const Form = ({ formId, formData, section, startEditForm, onDeleteClick }) => {
   const titles = {
     education: 'schoolName',
     experience: 'companyName',
@@ -118,9 +125,20 @@ const Form = ({ formId, formData, section, startEditForm }) => {
 
   if (titles[section]) {
     return (
-      <button onClick={() => startEditForm(formId)}>
-        {formData[titles[section]] || ''}
-      </button>
+      <div className='form-buttons-container'>
+        <button
+          className='form-open-button'
+          onClick={() => startEditForm(formId)}
+        >
+          {formData[titles[section]] || ''}
+        </button>
+        <button
+          className='form-delete-button'
+          onClick={() => onDeleteClick(formId)}
+        >
+          <Trash2 />
+        </button>
+      </div>
     )
   }
 }

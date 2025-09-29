@@ -1,0 +1,25 @@
+nav {
+  background-color: var(--nav-bg-color);
+}
+
+nav button {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--nav-bg-color);
+  color: var(--primary-color);
+  transition: background-color 0.3s linear;
+
+  &:hover {
+    background-color: var(--nav-bg-hover-color);
+  }
+
+  svg {
+    transition: color 0.3s linear;
+  }
+}
+
+.nav-active-button {
+  background-color: var(--nav-bg-active-color);
+  color: var(--nav-logo-active-color);
+}

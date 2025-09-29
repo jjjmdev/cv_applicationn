@@ -1,7 +1,7 @@
 import './App.css'
 import { useState } from 'react'
-import Editor from './components/cv-editor/Editor'
-import Preview from './components/preview/Preview'
+import Editor from './components/cv-editor/Editor/Editor'
+import Preview from './components/Preview/Preview'
 import { data as initData, prefillData } from './data'
 
 function App() {
