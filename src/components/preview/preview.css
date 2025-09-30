@@ -1,25 +1,26 @@
 .preview {
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .a4-preview-page__container {
-  margin-bottom: 2rem;
-  height: calc(267mm * 0.6);
+  margin: 2rem;
+  width: auto;
+  height: auto;
 }
 
 .a4-preview-page {
-  width: 180mm;
-  height: 267mm;
+  width: 216mm;
+  height: 279mm;
   font-family: 'Inter';
   text-align: justify;
+  zoom: 0.4;
 
-  padding: 3rem;
-  background-color: #fdfdfa;
+  padding: 0.5in 1in;
+  background-color: white;
   border: 1px solid #ddd;
   transform-origin: top;
-  scale: 0.6;
 
   h2 {
     font-size: 1rem;
@@ -92,22 +93,13 @@ section.preview-personal-info {
 }
 
 @media (min-width: 600px) {
-  .a4-preview-page__container {
-    height: calc(267mm * 0.8);
-  }
-
   .a4-preview-page {
-    scale: 0.8;
+    zoom: 0.8;
   }
 }
 
 @media (min-width: 1024px) {
-  .a4-preview-page__container {
-    height: calc(267mm);
-    margin: 0;
-  }
-
   .a4-preview-page {
-    scale: 1;
+    zoom: 0.9;
   }
 }
