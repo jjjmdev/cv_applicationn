@@ -92,6 +92,12 @@ section.preview-personal-info {
   margin-bottom: 0.5rem;
 }
 
+@media (min-width: 400px) {
+  .a4-preview-page {
+    zoom: 0.5;
+  }
+}
+
 @media (min-width: 600px) {
   .a4-preview-page {
     zoom: 0.8;

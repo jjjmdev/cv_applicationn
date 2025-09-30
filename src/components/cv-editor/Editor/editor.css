@@ -29,7 +29,6 @@ button {
   padding-right: 1.5rem;
   background-color: var(--editor-bg-color);
   color: var(--primary-color);
-  margin-bottom: 2rem;
 
   nav,
   section {
