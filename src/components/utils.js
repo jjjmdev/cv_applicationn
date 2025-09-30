@@ -13,3 +13,29 @@ export const kebabToCamel = (kebabString) => {
 export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
+
+export const isFieldsEmpty = (obj) => {
+  for (const [, field] of Object.entries(obj)) {
+    for (const [, value] of Object.entries(field)) {
+      if (value !== '') return false
+    }
+  }
+
+  return true
+}
+
+export const isStringEmpty = (string) => {
+  if (string !== '') {
+    return false
+  }
+
+  return true
+}
+
+export const hideIfEmpty = (element) => {
+  if (typeof element === 'string') {
+    return isStringEmpty(element) ? 'hidden ' : ''
+  } else if (typeof element === 'object') {
+    return isFieldsEmpty(element) ? 'hidden ' : ''
+  }
+}

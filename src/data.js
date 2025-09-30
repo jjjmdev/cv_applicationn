@@ -32,9 +32,9 @@ export const emptyData = {
 export const data = {
   personalInfo: emptyData.personalInfo,
   skills: '',
-  projects: {},
   education: {},
   experience: {},
+  projects: {},
 }
 
 export const prefillData = {
@@ -48,31 +48,32 @@ export const prefillData = {
 
   education: {
     [uuidv4()]: {
-      schoolName: 'International State College of the Philippines',
+      schoolName:
+        'International State College of the Philippines, Encantadia Extension',
       degree: 'BS in Reverse Psychology',
-      startDate: 'Sep 2030',
-      endDate: 'July 2035',
-      location: 'Samar, Leyte',
+      startDate: 'Sep 2015',
+      endDate: 'July 2020',
+      location: 'Encantadia, Cavite',
     },
   },
 
   experience: {
     [uuidv4()]: {
-      companyName: 'Company Name',
-      jobTitle: 'Manager',
-      startDate: 'Sep 2011',
-      endDate: 'July 20016',
-      location: 'Country, City',
+      companyName: 'Goologolo',
+      jobTitle: 'Janitor',
+      startDate: 'Sept 2020',
+      endDate: 'July 2022',
+      location: 'San Fernando, La Union',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quos, ullam repellat magnam cupiditate.',
     },
 
     [uuidv4()]: {
-      companyName: 'Company Name Two',
-      jobTitle: 'Administrator',
-      startDate: 'Sep 2016',
-      endDate: 'July 2024',
-      location: 'Country, City',
+      companyName: 'Betflix',
+      jobTitle: 'President',
+      startDate: 'Dec 2022',
+      endDate: 'Nov 2024',
+      location: 'Makati, Metro Manila',
       description:
         'Consequuntur, perspiciatis beatae provident blanditiis officiis iste recusandae nam itaque exercitationem laborum asperiores porro ipsums.',
     },
@@ -80,15 +81,15 @@ export const prefillData = {
 
   projects: {
     [uuidv4()]: {
-      projectName: 'Project One',
+      projectName: 'Calorie Tracker',
       description:
-        'ipsum dolor sit amet consectetur autem. ipsum dolor sit amet consectetur adipisicing elit. Doloribus quia sit iusto veritatis saepe esse enim maiores autem.',
+        'Reprehenderit dolor veniam irure Lorem aute deserunt amet id anim. Deserunt dolore culpa non deserunt non Lorem eu consectetur est.',
     },
 
     [uuidv4()]: {
-      projectName: 'Project Two',
+      projectName: 'To-Do List',
       description:
-        'Consequuntur, perspiciatis beatae provident blanditiis officiis iste recusandae nam itaque exercitationem laborum asperiores porro ipsum. Dolores illum ab blanditiis libero.',
+        'Fugiat incididunt nostrud laborum cillum Lorem sit culpa proident officia ex qui. Labore cillum eiusmod laborum aliqua mollit ad reprehenderit magna.',
     },
   },
 

@@ -6,9 +6,9 @@ export default function Navbar({ data, setActiveSection, activeSection }) {
   const icons = {
     personalInfo: <UserPen />,
     skills: <CodeXml />,
-    projects: <Bot />,
     education: <GraduationCap />,
     experience: <Bug />,
+    projects: <Bot />,
   }
 
   return (

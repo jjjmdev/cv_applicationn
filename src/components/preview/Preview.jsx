@@ -1,7 +1,8 @@
 import './preview.css'
+import { hideIfEmpty } from '../utils'
 
 export default function Preview({ data }) {
-  const { personalInfo, education, experience } = data
+  const { personalInfo, skills, education, experience, projects } = data
 
   return (
     <div className='preview'>
@@ -12,18 +13,31 @@ export default function Preview({ data }) {
               {personalInfo.firstName} {personalInfo.lastName}
             </h1>
             <p>
-              {data.personalInfo.email} | {data.personalInfo.phoneNumber} |{' '}
-              {data.personalInfo.location}
+              {/* Doing too much but: only show '|' if two fields are filled */}
+              {personalInfo.email}
+
+              {personalInfo.email !== '' &&
+                (personalInfo.phoneNumber !== '' ||
+                  personalInfo.location !== '') &&
+                ' | '}
+
+              {personalInfo.phoneNumber}
+
+              {personalInfo.phoneNumber !== '' &&
+                personalInfo.location !== '' &&
+                ' | '}
+
+              {personalInfo.location}
             </p>
           </section>
 
-          <section className='preview-skills'>
+          <section className={hideIfEmpty(skills) + 'preview-skills'}>
             <h2>{'Technical Skills'.toUpperCase()}</h2>
             <hr />
-            <p>{data.skills}</p>
+            <p>{skills}</p>
           </section>
 
-          <section className='preview-education'>
+          <section className={hideIfEmpty(education) + 'preview-education'}>
             <h2>{'Education'.toUpperCase()}</h2>
             <hr />
             {Object.entries(education).map(
@@ -44,7 +58,7 @@ export default function Preview({ data }) {
             )}
           </section>
 
-          <section className='preview-experience'>
+          <section className={hideIfEmpty(experience) + 'preview-experience'}>
             <h2>{'Experience'.toUpperCase()}</h2>
             <hr />
             {Object.entries(experience).map(
@@ -76,11 +90,11 @@ export default function Preview({ data }) {
             )}
           </section>
 
-          <section className='preview-projects'>
+          <section className={hideIfEmpty(projects) + 'preview-projects'}>
             <h2>{'Projects'.toUpperCase()}</h2>
             <hr />
 
-            {Object.entries(data.projects).map(
+            {Object.entries(projects).map(
               ([key, { projectName, description }]) => (
                 <div key={key}>
                   <h3>{projectName}</h3>
